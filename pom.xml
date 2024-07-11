@@ -18,6 +18,7 @@
 
   <modules>
     <module>customer-service</module>
+    <module>car-service</module>
   </modules>
 
   <properties>

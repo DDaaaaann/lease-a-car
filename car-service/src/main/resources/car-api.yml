@@ -2,19 +2,19 @@ openapi: 3.0.3
 info:
   title: Lease a car API 1.0.0
   description: |-
-    This is a lease a car api for customer, as an assignment for SVB.
+    This is a lease a car api for car data, as an assignment for SVB.
   version: 1.0.0
 tags:
-  - name: customer
-    description: Everything about customers
+  - name: car
+    description: Everything about cars
 paths:
-  /customers:
+  /cars:
     get:
       tags:
-        - customer
-      summary: Get all customers
-      description: Find all registered customers
-      operationId: getCustomers
+        - cars
+      summary: Get all cars
+      description: Find all registered cars
+      operationId: getCars
       responses:
         '200':
           description: Successful operation
@@ -23,9 +23,9 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Customer'
+                  $ref: '#/components/schemas/Car'
         '404':
-          description: Customers not found
+          description: Cars not found
         '422':
           description: Validation exception
           # security:
@@ -34,16 +34,16 @@ paths:
           # - read:pets
     post:
       tags:
-        - customer
-      summary: Add a new cutomer
-      description: Register a new customer by adding it
-      operationId: addCustomer
+        - car
+      summary: Add a new car
+      description: Register a new car by adding it
+      operationId: addCar
       requestBody:
-        description: Create a new customer
+        description: Create a new car
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Customer'
+              $ref: '#/components/schemas/Car'
         required: true
       responses:
         '200':
@@ -51,7 +51,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Customer'
+                $ref: '#/components/schemas/Car'
         '400':
           description: Invalid input
         '422':
@@ -60,17 +60,17 @@ paths:
           # - petstore_auth:
           # - write:pets
           # - read:pets
-  /customers/{id}:
+  /cars/{id}:
     get:
       tags:
-        - customer
-      summary: Get customer by id
-      description: Get customer by its id
-      operationId: getCustomerById
+        - car
+      summary: Get car by id
+      description: Get car by its id
+      operationId: getCarById
       parameters:
         - name: id
           in: path
-          description: The id of the customer to get
+          description: The id of the car to get
           required: true
           schema:
             type: integer
@@ -81,44 +81,44 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Customer'
+                $ref: '#/components/schemas/Car'
         '400':
           description: Invalid id supplied
         '404':
           description: Customer not found
     put:
       tags:
-        - customer
-      summary: Update customer
-      description: Update an existing cutomer
-      operationId: updateCustomer
+        - car
+      summary: Update car
+      description: Update an existing car
+      operationId: updateCar
       parameters:
         - name: id
           in: path
-          description: The id of the customer to uodate
+          description: The id of the car to uodate
           required: true
           schema:
             type: integer
             format: int64
       requestBody:
-        description: Update an existent customer
+        description: Update an existent car
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Customer'
+              $ref: '#/components/schemas/Car'
       responses:
         default:
           description: successful operation
     delete:
       tags:
-        - customer
-      summary: Delete customer
-      description: Delete an existing customer
-      operationId: deleteCustomer
+        - car
+      summary: Delete car
+      description: Delete an existing car
+      operationId: deleteCar
       parameters:
         - name: id
           in: path
-          description: The id of the customer to delete
+          description: The id of the car to delete
           required: true
           schema:
             type: integer
@@ -130,46 +130,38 @@ paths:
           description: Customer not found
 components:
   schemas:
-    Customer:
+    Car:
       type: object
       properties:
         id:
           type: integer
           format: int64
           example: 100000
-        name:
+        make:
           type: string
-          example: fehguy
-        email:
+          example: Lexus
+        model:
           type: string
-          format: email
-          example: johndoe@mail.com
-        address:
-          type: array
-          xml:
-            name: addresses
-            wrapped: true
-          items:
-            $ref: '#/components/schemas/Address'
+          example: IS220d
+        version:
+          type: string
+          example: Sport
+        numberOfDoors:
+          type: integer
+          example: 4
+        co2Emission:
+          type: integer
+          example: 150
+        grossPrice:
+          type: number
+          format: double
+          example: 44285
+        nettPrice:
+          type: number
+          format: double
+          example: 28488,66
       xml:
         name: customer
-    Address:
-      type: object
-      properties:
-        street:
-          type: string
-          example: Dorpsstraat
-        houseNumber:
-          type: string
-          example: 123
-        place:
-          type: string
-          example: Delft
-        zipCode:
-          type: string
-          example: 1234AB
-      xml:
-        name: address
     # securitySchemes:
 #    customer_auth:
 #      type: oauth2

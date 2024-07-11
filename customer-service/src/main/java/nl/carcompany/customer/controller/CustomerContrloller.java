@@ -27,7 +27,7 @@ public class CustomerContrloller implements CustomersApi {
   @Override
   public ResponseEntity<Void> deleteCustomer(final Long id) {
     customerService.deleteCustomer(id);
-    return ok(null);
+    return ok().build();
   }
 
   @Override
@@ -44,8 +44,6 @@ public class CustomerContrloller implements CustomersApi {
   @Override
   public ResponseEntity<Void> updateCustomer(final Long id, final CustomerDto customerDto) {
     customerService.updateCustomer(id, customerDto);
-    return null;
+    return ok().build();
   }
-
-
 }
