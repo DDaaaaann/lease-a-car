@@ -8,9 +8,9 @@ import nl.carcompany.customer.converter.CustomerEntityToDtoConverter;
 import nl.carcompany.customer.entity.CustomerEntity;
 import nl.carcompany.customer.exceptions.CustomerNotFoundException;
 import nl.carcompany.customer.exceptions.NoUniqueResultException;
-import nl.carcompany.customer.model.CustomerDto;
 import nl.carcompany.customer.repository.CustomerRepository;
 import nl.carcompany.customer.service.CustomerService;
+import nl.carcompany.lease.model.CustomerDto;
 import org.springframework.stereotype.Service;
 
 @Service

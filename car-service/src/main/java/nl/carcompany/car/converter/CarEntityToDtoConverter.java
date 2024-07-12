@@ -1,7 +1,7 @@
 package nl.carcompany.car.converter;
 
 import nl.carcompany.car.entity.CarEntity;
-import nl.carcompany.car.model.CarDto;
+import nl.carcompany.lease.model.CarDto;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 

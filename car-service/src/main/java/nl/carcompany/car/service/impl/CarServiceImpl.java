@@ -8,9 +8,9 @@ import nl.carcompany.car.converter.CarEntityToDtoConverter;
 import nl.carcompany.car.entity.CarEntity;
 import nl.carcompany.car.exceptions.CarNotFoundException;
 import nl.carcompany.car.exceptions.NoUniqueResultException;
-import nl.carcompany.car.model.CarDto;
 import nl.carcompany.car.repository.CarRepository;
 import nl.carcompany.car.service.CarService;
+import nl.carcompany.lease.model.CarDto;
 import org.springframework.stereotype.Service;
 
 @Service

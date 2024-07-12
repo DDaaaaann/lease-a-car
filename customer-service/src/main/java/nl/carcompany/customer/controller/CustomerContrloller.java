@@ -4,14 +4,12 @@ import static org.springframework.http.ResponseEntity.ok;
 
 import java.util.List;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import nl.carcompany.customer.api.CustomersApi;
-import nl.carcompany.customer.model.CustomerDto;
 import nl.carcompany.customer.service.impl.CustomerServiceImpl;
+import nl.carcompany.lease.api.CustomersApi;
+import nl.carcompany.lease.model.CustomerDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
-@Slf4j
 @RestController
 @RequiredArgsConstructor
 public class CustomerContrloller implements CustomersApi {
@@ -20,7 +18,6 @@ public class CustomerContrloller implements CustomersApi {
 
   @Override
   public ResponseEntity<CustomerDto> addCustomer(final CustomerDto customerDto) {
-    log.info("Creating customer {}", customerDto.getName());
     return ok(customerService.createCustomer(customerDto));
   }
 

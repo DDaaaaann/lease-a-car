@@ -4,14 +4,12 @@ import static org.springframework.http.ResponseEntity.ok;
 
 import java.util.List;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import nl.carcompany.car.api.CarsApi;
-import nl.carcompany.car.model.CarDto;
 import nl.carcompany.car.service.impl.CarServiceImpl;
+import nl.carcompany.lease.api.CarsApi;
+import nl.carcompany.lease.model.CarDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
-@Slf4j
 @RestController
 @RequiredArgsConstructor
 public class CarController implements CarsApi {

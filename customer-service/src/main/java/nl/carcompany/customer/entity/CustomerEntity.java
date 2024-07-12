@@ -16,6 +16,7 @@ public class CustomerEntity {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
   private String name;
+
 //  TODO add all and maybe value objects
 
 }
