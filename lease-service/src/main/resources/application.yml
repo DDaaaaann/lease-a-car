@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:db
+    username: sa
+    password: password
+    driverClassName: org.h2.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+  liquibase:
+    change-log: db.changelog-lease.xml
+  h2:
+    console:
+      enabled: true
+server:
+  port: 8082
+#sharedsecret
+#gateway validate?
