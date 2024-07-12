@@ -21,6 +21,7 @@
     <module>car-service</module>
     <module>lease-service</module>
     <module>ws</module>
+    <module>gateway-service</module>
   </modules>
 
   <properties>
