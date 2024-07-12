@@ -32,10 +32,8 @@ paths:
           description: Leases not found
         '422':
           description: Validation exception
-          # security:
-          # - petstore_auth:
-          # - write:pets
-          # - read:pets
+      security:
+        - lease_auth: [ read_leases, write_leases ]
     post:
       tags:
         - lease
@@ -60,10 +58,8 @@ paths:
           description: Invalid input
         '422':
           description: Validation exception
-          # security:
-          # - petstore_auth:
-          # - write:pets
-          # - read:pets
+      security:
+        - lease_auth: [ read_leases, write_leases ]
   /customers:
     get:
       tags:
@@ -84,10 +80,8 @@ paths:
           description: Customers not found
         '422':
           description: Validation exception
-          # security:
-          # - petstore_auth:
-          # - write:pets
-          # - read:pets
+      security:
+        - customer_auth: [ read_customers ]
     post:
       tags:
         - customer
@@ -112,10 +106,8 @@ paths:
           description: Invalid input
         '422':
           description: Validation exception
-          # security:
-          # - petstore_auth:
-          # - write:pets
-          # - read:pets
+      security:
+        - customer_auth: [ read_customers, write_customers ]
   /customers/{id}:
     get:
       tags:
@@ -142,6 +134,8 @@ paths:
           description: Invalid id supplied
         '404':
           description: Customer not found
+      security:
+        - customer_auth: [ read_customers ]
     put:
       tags:
         - customer
@@ -165,6 +159,8 @@ paths:
       responses:
         default:
           description: successful operation
+      security:
+        - customer_auth: [ read_customers, write_customers ]
     delete:
       tags:
         - customer
@@ -184,6 +180,8 @@ paths:
           description: Invalid id supplied
         '404':
           description: Customer not found
+      security:
+        - customer_auth: [ read_customers, write_customers ]
   /cars:
     get:
       tags:
@@ -204,10 +202,8 @@ paths:
           description: Cars not found
         '422':
           description: Validation exception
-          # security:
-          # - petstore_auth:
-          # - write:pets
-          # - read:pets
+      security:
+        - car_auth: [ read_cars ]
     post:
       tags:
         - car
@@ -232,10 +228,8 @@ paths:
           description: Invalid input
         '422':
           description: Validation exception
-          # security:
-          # - petstore_auth:
-          # - write:pets
-          # - read:pets
+      security:
+        - car_auth: [ read_cars, write_cars ]
   /cars/{id}:
     get:
       tags:
@@ -262,6 +256,8 @@ paths:
           description: Invalid id supplied
         '404':
           description: Customer not found
+      security:
+        - car_auth: [ read_cars ]
     put:
       tags:
         - car
@@ -285,6 +281,8 @@ paths:
       responses:
         default:
           description: successful operation
+      security:
+        - car_auth: [ read_cars, write_cars ]
     delete:
       tags:
         - car
@@ -304,6 +302,8 @@ paths:
           description: Invalid id supplied
         '404':
           description: Customer not found
+      security:
+        - car_auth: [ read_cars, write_cars ]
 components:
   schemas:
     Lease:
@@ -409,16 +409,28 @@ components:
           example: 1234AB
       xml:
         name: address
-    # securitySchemes:
-#    customer_auth:
-#      type: oauth2
-#      flows:
-#        implicit:
-#          authorizationUrl:
-#          scopes:
-#            write:customers: modify customers
-#            read:customers: read your customers
-#    api_key:
-#      type: apiKey
-#      name: api_key
-#      in: header
+  securitySchemes:
+    lease_auth:
+      type: oauth2
+      flows:
+        implicit:
+          authorizationUrl: http://localhost:8080/oauth2/authorize
+          scopes:
+            write_leases: modify leases
+            read_leases: read leases
+    customer_auth:
+      type: oauth2
+      flows:
+        implicit:
+          authorizationUrl: http://localhost:8080/oauth2/authorize
+          scopes:
+            write_customers: modify customers
+            read_customers: read customers
+    car_auth:
+      type: oauth2
+      flows:
+        implicit:
+          authorizationUrl: http://localhost:8080/oauth2/authorize
+          scopes:
+            write_cars: modify cars
+            read_cars: read cars
