@@ -19,10 +19,13 @@
   <modules>
     <module>customer-service</module>
     <module>car-service</module>
+    <module>lease-service</module>
+    <module>ws</module>
   </modules>
 
   <properties>
     <java.version>11</java.version>
+    <spring.cloud.version>2.1.6.RELEASE</spring.cloud.version>
     <openapitools.version>7.7.0</openapitools.version>
     <lombok.version>1.18.34</lombok.version>
     <liquibase.version>4.28.0</liquibase.version>
@@ -33,6 +36,11 @@
 
   <dependencyManagement>
     <dependencies>
+      <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-eureka-server</artifactId>
+        <version>${spring.cloud.version}</version>
+      </dependency>
       <dependency>
         <groupId>org.openapitools</groupId>
         <artifactId>openapi-generator-maven-plugin</artifactId>
@@ -61,22 +69,5 @@
       </dependency>
     </dependencies>
   </dependencyManagement>
-
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-maven-plugin</artifactId>
-        <configuration>
-          <excludes>
-            <exclude>
-              <groupId>org.projectlombok</groupId>
-              <artifactId>lombok</artifactId>
-            </exclude>
-          </excludes>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
 
 </project>
