@@ -1,0 +1,420 @@
+openapi: 3.0.3
+info:
+  title: Lease a car API 1.0.0
+  description: |-
+    This is a lease a car api, as an assignment for SVB.
+  version: 1.0.0
+tags:
+  - name: lease
+    description: Everything about leasing a car
+  - name: customer
+    description: Everything about customers
+  - name: car
+    description: Everything about cars
+paths:
+  /leases:
+    get:
+      tags:
+        - lease
+      summary: Get all leases
+      description: Find all leases
+      operationId: getLeases
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Lease'
+        '404':
+          description: Leases not found
+        '422':
+          description: Validation exception
+          # security:
+          # - petstore_auth:
+          # - write:pets
+          # - read:pets
+    post:
+      tags:
+        - lease
+      summary: Add a new lease
+      description: Lease a car
+      operationId: addLease
+      requestBody:
+        description: Create a new lease
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Lease'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Lease'
+        '400':
+          description: Invalid input
+        '422':
+          description: Validation exception
+          # security:
+          # - petstore_auth:
+          # - write:pets
+          # - read:pets
+  /customers:
+    get:
+      tags:
+        - customer
+      summary: Get all customers
+      description: Find all registered customers
+      operationId: getCustomers
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Customer'
+        '404':
+          description: Customers not found
+        '422':
+          description: Validation exception
+          # security:
+          # - petstore_auth:
+          # - write:pets
+          # - read:pets
+    post:
+      tags:
+        - customer
+      summary: Add a new cutomer
+      description: Register a new customer by adding it
+      operationId: addCustomer
+      requestBody:
+        description: Create a new customer
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Customer'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+        '400':
+          description: Invalid input
+        '422':
+          description: Validation exception
+          # security:
+          # - petstore_auth:
+          # - write:pets
+          # - read:pets
+  /customers/{id}:
+    get:
+      tags:
+        - customer
+      summary: Get customer by id
+      description: Get customer by its id
+      operationId: getCustomerById
+      parameters:
+        - name: id
+          in: path
+          description: The id of the customer to get
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+        '400':
+          description: Invalid id supplied
+        '404':
+          description: Customer not found
+    put:
+      tags:
+        - customer
+      summary: Update customer
+      description: Update an existing cutomer
+      operationId: updateCustomer
+      parameters:
+        - name: id
+          in: path
+          description: The id of the customer to uodate
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: Update an existent customer
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Customer'
+      responses:
+        default:
+          description: successful operation
+    delete:
+      tags:
+        - customer
+      summary: Delete customer
+      description: Delete an existing customer
+      operationId: deleteCustomer
+      parameters:
+        - name: id
+          in: path
+          description: The id of the customer to delete
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '400':
+          description: Invalid id supplied
+        '404':
+          description: Customer not found
+  /cars:
+    get:
+      tags:
+        - cars
+      summary: Get all cars
+      description: Find all registered cars
+      operationId: getCars
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Car'
+        '404':
+          description: Cars not found
+        '422':
+          description: Validation exception
+          # security:
+          # - petstore_auth:
+          # - write:pets
+          # - read:pets
+    post:
+      tags:
+        - car
+      summary: Add a new car
+      description: Register a new car by adding it
+      operationId: addCar
+      requestBody:
+        description: Create a new car
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Car'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Car'
+        '400':
+          description: Invalid input
+        '422':
+          description: Validation exception
+          # security:
+          # - petstore_auth:
+          # - write:pets
+          # - read:pets
+  /cars/{id}:
+    get:
+      tags:
+        - car
+      summary: Get car by id
+      description: Get car by its id
+      operationId: getCarById
+      parameters:
+        - name: id
+          in: path
+          description: The id of the car to get
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Car'
+        '400':
+          description: Invalid id supplied
+        '404':
+          description: Customer not found
+    put:
+      tags:
+        - car
+      summary: Update car
+      description: Update an existing car
+      operationId: updateCar
+      parameters:
+        - name: id
+          in: path
+          description: The id of the car to uodate
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: Update an existent car
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Car'
+      responses:
+        default:
+          description: successful operation
+    delete:
+      tags:
+        - car
+      summary: Delete car
+      description: Delete an existing car
+      operationId: deleteCar
+      parameters:
+        - name: id
+          in: path
+          description: The id of the car to delete
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '400':
+          description: Invalid id supplied
+        '404':
+          description: Customer not found
+components:
+  schemas:
+    Lease:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 100000
+        customer:
+          $ref: '#/components/schemas/Customer'
+        car:
+          $ref: '#/components/schemas/Car'
+        mileage:
+          type: integer
+          example: 23045
+        duration:
+          type: integer
+          example: 24
+        interest:
+          type: number
+          format: float
+          example: 1,34
+        startDate:
+          type: string
+          format: date
+          example: 2017-07-21
+      xml:
+        name: customer
+    Customer:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 100000
+        name:
+          type: string
+          example: fehguy
+        email:
+          type: string
+          format: email
+          example: johndoe@mail.com
+        address:
+          type: array
+          xml:
+            name: addresses
+            wrapped: true
+          items:
+            $ref: '#/components/schemas/Address'
+      xml:
+        name: customer
+    Car:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 100000
+        make:
+          type: string
+          example: Lexus
+        model:
+          type: string
+          example: IS220d
+        version:
+          type: string
+          example: Sport
+        numberOfDoors:
+          type: integer
+          example: 4
+        co2Emission:
+          type: integer
+          example: 150
+        grossPrice:
+          type: number
+          format: double
+          example: 44285
+        nettPrice:
+          type: number
+          format: double
+          example: 28488,66
+      xml:
+        name: customer
+    Address:
+      type: object
+      properties:
+        street:
+          type: string
+          example: Dorpsstraat
+        houseNumber:
+          type: string
+          example: 123
+        place:
+          type: string
+          example: Delft
+        zipCode:
+          type: string
+          example: 1234AB
+      xml:
+        name: address
+    # securitySchemes:
+#    customer_auth:
+#      type: oauth2
+#      flows:
+#        implicit:
+#          authorizationUrl:
+#          scopes:
+#            write:customers: modify customers
+#            read:customers: read your customers
+#    api_key:
+#      type: apiKey
+#      name: api_key
+#      in: header
