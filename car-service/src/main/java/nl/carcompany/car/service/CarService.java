@@ -1,7 +1,7 @@
 package nl.carcompany.car.service;
 
 import java.util.List;
-import nl.carcompany.lease.model.CarDto;
+import nl.carcompany.rest.lease.model.CarDto;
 
 public interface CarService {
 

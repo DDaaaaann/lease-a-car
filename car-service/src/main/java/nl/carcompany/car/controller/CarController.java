@@ -5,8 +5,8 @@ import static org.springframework.http.ResponseEntity.ok;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import nl.carcompany.car.service.impl.CarServiceImpl;
-import nl.carcompany.lease.api.CarsApi;
-import nl.carcompany.lease.model.CarDto;
+import nl.carcompany.rest.lease.api.CarsApi;
+import nl.carcompany.rest.lease.model.CarDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 

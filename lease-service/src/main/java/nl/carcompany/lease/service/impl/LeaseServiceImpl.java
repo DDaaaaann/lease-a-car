@@ -6,9 +6,9 @@ import lombok.RequiredArgsConstructor;
 import nl.carcompany.lease.converter.LeaseDtoToEntityConverter;
 import nl.carcompany.lease.converter.LeaseEntityToDtoConverter;
 import nl.carcompany.lease.entity.LeaseEntity;
-import nl.carcompany.lease.model.LeaseDto;
 import nl.carcompany.lease.repository.LeaseRepository;
 import nl.carcompany.lease.service.LeaseService;
+import nl.carcompany.rest.lease.model.LeaseDto;
 import org.springframework.stereotype.Service;
 
 @Service

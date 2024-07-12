@@ -1,7 +1,7 @@
 package nl.carcompany.customer.service;
 
 import java.util.List;
-import nl.carcompany.lease.model.CustomerDto;
+import nl.carcompany.rest.lease.model.CustomerDto;
 
 public interface CustomerService {
 

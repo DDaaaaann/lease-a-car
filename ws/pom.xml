@@ -12,8 +12,8 @@
   <artifactId>ws</artifactId>
 
   <properties>
-    <maven.compiler.source>11</maven.compiler.source>
-    <maven.compiler.target>11</maven.compiler.target>
+    <maven.compiler.source>21</maven.compiler.source>
+    <maven.compiler.target>21</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
@@ -63,8 +63,8 @@
             <configuration>
               <inputSpec>${project.basedir}/src/main/resources/lease-api.yml</inputSpec>
               <generatorName>spring</generatorName>
-              <modelPackage>nl.carcompany.lease.model</modelPackage>
-              <apiPackage>nl.carcompany.lease.api</apiPackage>
+              <modelPackage>nl.carcompany.rest.lease.model</modelPackage>
+              <apiPackage>nl.carcompany.rest.lease.api</apiPackage>
               <generateApiTests>false</generateApiTests>
               <generateApiDocumentation>false</generateApiDocumentation>
               <generateModelTests>false</generateModelTests>
@@ -73,6 +73,7 @@
               <modelNameSuffix>Dto</modelNameSuffix>
               <configOptions>
                 <library>spring-boot</library>
+                <useSpringBoot3>true</useSpringBoot3>
                 <hideGenerationTimestamp>true</hideGenerationTimestamp>
                 <interfaceOnly>true</interfaceOnly>
                 <skipDefaultInterface>true</skipDefaultInterface>
@@ -82,35 +83,36 @@
               </configOptions>
             </configuration>
           </execution>
-          <!--          <execution>-->
-          <!--            <id>generateLeaseApiClient</id>-->
-          <!--            <phase>generate-sources</phase>-->
-          <!--            <goals>-->
-          <!--              <goal>generate</goal>-->
-          <!--            </goals>-->
-          <!--            <configuration>-->
-          <!--              <inputSpec>${project.basedir}/src/main/resources/lease-api.yml</inputSpec>-->
-          <!--              <generatorName>java</generatorName>-->
-          <!--              <modelPackage>nl.carcompany.restclient.lease.model</modelPackage>-->
-          <!--              <apiPackage>nl.carcompany.restclient.lease.api</apiPackage>-->
-          <!--              <generateApiTests>false</generateApiTests>-->
-          <!--              <generateApiDocumentation>false</generateApiDocumentation>-->
-          <!--              <generateModelTests>false</generateModelTests>-->
-          <!--              <generateModelDocumentation>false</generateModelDocumentation>-->
-          <!--              <modelNamePrefix>Ws</modelNamePrefix>-->
-          <!--              <configOptions>-->
-          <!--                <library>resttemplate</library>-->
-          <!--                <serializableModel>true</serializableModel>-->
-          <!--                <hideGenerationTimestamp>true</hideGenerationTimestamp>-->
-          <!--                <useJakartaEe>false</useJakartaEe>-->
-          <!--                <interfaceOnly>true</interfaceOnly>-->
-          <!--                <skipDefaultInterface>true</skipDefaultInterface>-->
-          <!--                <performBeanValidation>false</performBeanValidation>-->
-          <!--                <useBeanValidation>false</useBeanValidation>-->
-          <!--                <useBeanValidationFeature>false</useBeanValidationFeature>-->
-          <!--              </configOptions>-->
-          <!--            </configuration>-->
-          <!--          </execution>-->
+          <execution>
+            <id>generateLeaseApiClient</id>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>generate</goal>
+            </goals>
+            <configuration>
+              <inputSpec>${project.basedir}/src/main/resources/lease-api.yml</inputSpec>
+              <generatorName>java</generatorName>
+              <modelPackage>nl.carcompany.rest.lease.model</modelPackage>
+              <apiPackage>nl.carcompany.rest.lease.api</apiPackage>
+              <generateApiTests>false</generateApiTests>
+              <generateApiDocumentation>false</generateApiDocumentation>
+              <generateModelTests>false</generateModelTests>
+              <generateModelDocumentation>false</generateModelDocumentation>
+              <modelNameSuffix>Dto</modelNameSuffix>
+              <apiNameSuffix>Client</apiNameSuffix>
+              <configOptions>
+                <library>restclient</library>
+                <serializableModel>true</serializableModel>
+                <hideGenerationTimestamp>true</hideGenerationTimestamp>
+                <useJakartaEe>false</useJakartaEe>
+                <interfaceOnly>true</interfaceOnly>
+                <skipDefaultInterface>true</skipDefaultInterface>
+                <performBeanValidation>false</performBeanValidation>
+                <useBeanValidation>false</useBeanValidation>
+                <useBeanValidationFeature>false</useBeanValidationFeature>
+              </configOptions>
+            </configuration>
+          </execution>
         </executions>
       </plugin>
     </plugins>

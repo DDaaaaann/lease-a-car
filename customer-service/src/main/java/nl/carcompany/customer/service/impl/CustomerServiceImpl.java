@@ -10,7 +10,7 @@ import nl.carcompany.customer.exceptions.CustomerNotFoundException;
 import nl.carcompany.customer.exceptions.NoUniqueResultException;
 import nl.carcompany.customer.repository.CustomerRepository;
 import nl.carcompany.customer.service.CustomerService;
-import nl.carcompany.lease.model.CustomerDto;
+import nl.carcompany.rest.lease.model.CustomerDto;
 import org.springframework.stereotype.Service;
 
 @Service

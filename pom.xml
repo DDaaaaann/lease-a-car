@@ -6,7 +6,7 @@
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>2.1.9.RELEASE</version>
+    <version>3.3.1</version>
   </parent>
 
   <groupId>nl.carcompany</groupId>
@@ -24,8 +24,7 @@
   </modules>
 
   <properties>
-    <java.version>11</java.version>
-    <spring.cloud.version>2.1.6.RELEASE</spring.cloud.version>
+    <java.version>21</java.version>
     <openapitools.version>7.7.0</openapitools.version>
     <lombok.version>1.18.34</lombok.version>
     <liquibase.version>4.28.0</liquibase.version>
@@ -36,11 +35,6 @@
 
   <dependencyManagement>
     <dependencies>
-      <dependency>
-        <groupId>org.springframework.cloud</groupId>
-        <artifactId>spring-cloud-starter-eureka-server</artifactId>
-        <version>${spring.cloud.version}</version>
-      </dependency>
       <dependency>
         <groupId>org.openapitools</groupId>
         <artifactId>openapi-generator-maven-plugin</artifactId>

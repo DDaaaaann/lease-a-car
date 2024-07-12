@@ -4,9 +4,9 @@ import static org.springframework.http.ResponseEntity.ok;
 
 import java.util.List;
 import lombok.RequiredArgsConstructor;
-import nl.carcompany.lease.api.LeasesApi;
-import nl.carcompany.lease.model.LeaseDto;
 import nl.carcompany.lease.service.LeaseService;
+import nl.carcompany.rest.lease.api.LeasesApi;
+import nl.carcompany.rest.lease.model.LeaseDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
