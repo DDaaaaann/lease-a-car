@@ -33,6 +33,8 @@ public class LeaseEntityToDtoConverter implements Converter<LeaseEntity, LeaseDt
     leaseDto.setMileage(leaseEntity.getMileage());
     leaseDto.setStartDate(leaseEntity.getStartDate());
 
+    leaseDto.setLeaseRate(leaseEntity.getLeaseRate());
+
     return leaseDto;
   }
 }

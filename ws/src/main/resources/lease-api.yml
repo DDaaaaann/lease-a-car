@@ -331,6 +331,10 @@ components:
           type: string
           format: date
           example: 2017-07-21
+        leaseRate:
+          type: number
+          format: double
+          example: 270.80
       xml:
         name: customer
     Customer:

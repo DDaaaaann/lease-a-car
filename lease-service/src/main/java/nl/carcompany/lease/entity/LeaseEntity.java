@@ -23,4 +23,6 @@ public class LeaseEntity {
   private Float interest;
   private LocalDate startDate;
 
+  private Double leaseRate;
+
 }
