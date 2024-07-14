@@ -7,6 +7,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class LeaseRateServiceImpl implements LeaseRateService {
 
+  /**
+   * Calculates the current leaserate based on the values of the provided lease object.
+   *
+   * @param leaseDto Details of the lease
+   * @return the calculated leaserate
+   */
   @Override
   public Double calculateLeaseRate(final LeaseDto leaseDto) {
     final Integer mileage = leaseDto.getMileage();
