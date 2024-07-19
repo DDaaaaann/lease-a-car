@@ -53,4 +53,26 @@
       <scope>provided</scope>
     </dependency>
   </dependencies>
+
+  <build>
+    <finalName>customer-service</finalName>
+    <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+        <configuration>
+          <mainClass>nl.carcompany.customer.CustomerServiceApplication</mainClass>
+          <addResources>true</addResources>
+        </configuration>
+        <executions>
+          <execution>
+            <goals>
+              <goal>repackage</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
 </project>

@@ -1,0 +1,51 @@
+version: '3.8'
+services:
+  gateway:
+    image: carcompany/gateway-service
+    container_name: gateway-service
+    depends_on:
+      customer-service:
+        condition: service_started
+      car-service:
+        condition: service_started
+      lease-service:
+        condition: service_started
+
+    build:
+      context: ./gateway-service
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    networks:
+      - lease-a-car-network
+
+  customer-service:
+    image: carcompany/customer-service
+    container_name: customer-service
+    build:
+      context: ./customer-service
+      dockerfile: Dockerfile
+    networks:
+      - lease-a-car-network
+
+  car-service:
+    image: carcompany/car-service
+    container_name: car-service
+    build:
+      context: ./car-service
+      dockerfile: Dockerfile
+    networks:
+      - lease-a-car-network
+
+  lease-service:
+    image: carcompany/lease-service
+    container_name: lease-service
+    build:
+      context: ./lease-service
+      dockerfile: Dockerfile
+    networks:
+      - lease-a-car-network
+
+networks:
+  lease-a-car-network:
+    driver: bridge

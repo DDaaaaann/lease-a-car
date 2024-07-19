@@ -1,2 +1,12 @@
+gateway:
+  customer-service:
+    context: /customers
+    url: http://customer-service:8081
+  car-service:
+    context: /cars
+    url: http://car-service:8082
+  lease-service:
+    context: /leases
+    url: http://lease-service:8083
 server:
   port: 8080

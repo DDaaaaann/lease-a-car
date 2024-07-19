@@ -34,6 +34,19 @@ Run `Car-service` \
 Run `Customer-service` \
 Run `Lease-service`
 
+### Run with docker
+
+- `Package, Build, Compose`\
+  _This will package all modules, build the image and compose up_
+
+
+- `Build, Compose`\
+  _If no changes to the code where made, but rebuilding the images is necessary_
+
+
+- `Compose`\
+  _If only (re)staring existing containers_
+
 ## Usage
 
 Use the api as described in [lease-api.yml](ws/src/main/resources/lease-api.yml)
@@ -59,6 +72,7 @@ curl --location 'http://localhost:8080/cars' \
 ## Future developments
 - [x] Generate Rest clients
 - [x] Gateway service
+- [ ] Fix vulnerabilities
 - [ ] Validation
 - [ ] Api tests
 - [ ] Auth service

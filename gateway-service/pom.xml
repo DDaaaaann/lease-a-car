@@ -28,6 +28,32 @@
       <artifactId>spring-cloud-starter-gateway</artifactId>
       <version>${spring-cloud.version}</version>
     </dependency>
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <scope>compile</scope>
+    </dependency>
   </dependencies>
+
+  <build>
+    <finalName>gateway-service</finalName>
+    <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+        <configuration>
+          <mainClass>nl.carcompany.gateway.GatewayServiceApplication</mainClass>
+          <addResources>true</addResources>
+        </configuration>
+        <executions>
+          <execution>
+            <goals>
+              <goal>repackage</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
 
 </project>
