@@ -352,12 +352,7 @@ components:
           format: email
           example: johndoe@mail.com
         address:
-          type: array
-          xml:
-            name: addresses
-            wrapped: true
-          items:
-            $ref: '#/components/schemas/Address'
+          $ref: '#/components/schemas/Address'
       xml:
         name: customer
     Car:

@@ -13,6 +13,21 @@
       <column name="name" type="varchar(50)">
         <constraints nullable="false"/>
       </column>
+      <column name="street" type="varchar(50)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="housenumber" type="varchar(4)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="zipcode" type="varchar(6)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="place" type="varchar(50)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="email" type="varchar(50)">
+        <constraints nullable="false"/>
+      </column>
     </createTable>
   </changeSet>
 </databaseChangeLog>

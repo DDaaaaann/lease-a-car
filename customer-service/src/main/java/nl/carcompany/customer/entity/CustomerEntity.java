@@ -1,5 +1,6 @@
 package nl.carcompany.customer.entity;
 
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,7 +17,9 @@ public class CustomerEntity {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
   private String name;
+  private String email;
 
-//  TODO add all and maybe value objects
+  @Embedded
+  private AddressEntity addressEntity;
 
 }

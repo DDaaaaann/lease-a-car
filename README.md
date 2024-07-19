@@ -59,6 +59,8 @@ curl --location 'http://localhost:8080/cars' \
 ## Future developments
 - [x] Generate Rest clients
 - [x] Gateway service
+- [ ] Validation
+- [ ] Api tests
 - [ ] Auth service
 - [ ] DDD
 - [ ] Load balancing
