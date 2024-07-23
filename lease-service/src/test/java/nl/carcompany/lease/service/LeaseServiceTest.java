@@ -1,15 +1,19 @@
 package nl.carcompany.lease.service;
 
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyDouble;
+import static org.mockito.ArgumentMatchers.anyFloat;
+import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import nl.carcompany.lease.converter.LeaseDtoToEntityConverter;
-import nl.carcompany.lease.converter.LeaseEntityToDtoConverter;
+import nl.carcompany.lease.converter.LeaseEntityToResponseDtoConverter;
 import nl.carcompany.lease.entity.LeaseEntity;
 import nl.carcompany.lease.repository.LeaseRepository;
 import nl.carcompany.lease.service.impl.LeaseServiceImpl;
 import nl.carcompany.rest.lease.model.LeaseDto;
+import nl.carcompany.rest.lease.model.LeaseResponseDto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -28,7 +32,7 @@ class LeaseServiceTest {
   private LeaseRateService leaseRateService;
 
   @Mock
-  private LeaseEntityToDtoConverter entityToDtoConverter;
+  private LeaseEntityToResponseDtoConverter entityToDtoConverter;
 
   @Mock
   private LeaseDtoToEntityConverter dtoToEntityConverter;
@@ -42,9 +46,10 @@ class LeaseServiceTest {
     final LeaseEntity leaseEntity = new LeaseEntity();
 
     when(dtoToEntityConverter.convert(any(LeaseDto.class))).thenReturn(leaseEntity);
-    when(leaseRateService.calculateLeaseRate(any(LeaseDto.class))).thenReturn(123.0);
+    when(leaseRateService.calculateLeaseRate(anyInt(), anyInt(), anyFloat(),
+        anyDouble())).thenReturn(123.0);
     when(leaseRepository.save(any(LeaseEntity.class))).thenReturn(leaseEntity);
-    when(entityToDtoConverter.convert(any(LeaseEntity.class))).thenReturn(new LeaseDto());
+    when(entityToDtoConverter.convert(any(LeaseEntity.class))).thenReturn(new LeaseResponseDto());
   }
 
   @Test
@@ -53,7 +58,7 @@ class LeaseServiceTest {
     leaseService.leaseCar(newLease);
 
     verify(dtoToEntityConverter).convert(any(LeaseDto.class));
-    verify(leaseRateService).calculateLeaseRate(any(LeaseDto.class));
+    verify(leaseRateService).calculateLeaseRate(anyInt(), anyInt(), anyFloat(), anyDouble());
     verify(leaseRepository).save(any(LeaseEntity.class));
     verify(entityToDtoConverter).convert(any(LeaseEntity.class));
   }

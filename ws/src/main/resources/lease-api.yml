@@ -27,7 +27,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Lease'
+                  $ref: '#/components/schemas/LeaseResponse'
         '404':
           description: Leases not found
         '422':
@@ -53,7 +53,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Lease'
+                $ref: '#/components/schemas/LeaseResponse'
         '400':
           description: Invalid input
         '422':
@@ -75,7 +75,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Customer'
+                  $ref: '#/components/schemas/CustomerResponse'
         '404':
           description: Customers not found
         '422':
@@ -101,7 +101,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Customer'
+                $ref: '#/components/schemas/CustomerResponse'
         '400':
           description: Invalid input
         '422':
@@ -129,7 +129,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Customer'
+                $ref: '#/components/schemas/CustomerResponse'
         '400':
           description: Invalid id supplied
         '404':
@@ -197,7 +197,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Car'
+                  $ref: '#/components/schemas/CarResponse'
         '404':
           description: Cars not found
         '422':
@@ -223,7 +223,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Car'
+                $ref: '#/components/schemas/CarResponse'
         '400':
           description: Invalid input
         '422':
@@ -251,7 +251,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Car'
+                $ref: '#/components/schemas/CarResponse'
         '400':
           description: Invalid id supplied
         '404':
@@ -309,14 +309,14 @@ components:
     Lease:
       type: object
       properties:
-        id:
+        customerId:
           type: integer
           format: int64
-          example: 100000
-        customer:
-          $ref: '#/components/schemas/Customer'
-        car:
-          $ref: '#/components/schemas/Car'
+          example: 123
+        carId:
+          type: integer
+          format: int64
+          example: 123
         mileage:
           type: integer
           example: 23045
@@ -331,19 +331,11 @@ components:
           type: string
           format: date
           example: 2017-07-21
-        leaseRate:
-          type: number
-          format: double
-          example: 270.80
       xml:
         name: customer
     Customer:
       type: object
       properties:
-        id:
-          type: integer
-          format: int64
-          example: 100000
         name:
           type: string
           example: fehguy
@@ -358,10 +350,6 @@ components:
     Car:
       type: object
       properties:
-        id:
-          type: integer
-          format: int64
-          example: 100000
         make:
           type: string
           example: Lexus
@@ -404,6 +392,41 @@ components:
           example: 1234AB
       xml:
         name: address
+    CarResponse:
+      allOf:
+        - $ref: '#/components/schemas/Car'
+        - type: object
+          properties:
+            id:
+              type: integer
+              format: int64
+              example: 123
+    CustomerResponse:
+      allOf:
+        - $ref: '#/components/schemas/Customer'
+        - type: object
+          properties:
+            id:
+              type: integer
+              format: int64
+              example: 123
+    LeaseResponse:
+      allOf:
+        - $ref: '#/components/schemas/Lease'
+        - type: object
+          properties:
+            id:
+              type: integer
+              format: int64
+              example: 123
+            leaseRate:
+              type: number
+              format: double
+              example: 270.80
+            customer:
+              $ref: '#/components/schemas/CustomerResponse'
+            car:
+              $ref: '#/components/schemas/CarResponse'
   securitySchemes:
     lease_auth:
       type: oauth2

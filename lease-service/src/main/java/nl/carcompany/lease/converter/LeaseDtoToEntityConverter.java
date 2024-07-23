@@ -11,8 +11,8 @@ public class LeaseDtoToEntityConverter implements Converter<LeaseDto, LeaseEntit
   @Override
   public LeaseEntity convert(final LeaseDto leaseDto) {
     final LeaseEntity leaseEntity = new LeaseEntity();
-    leaseEntity.setCarId(leaseDto.getCar().getId());
-    leaseEntity.setCustomerId(leaseDto.getCustomer().getId());
+    leaseEntity.setCarId(leaseDto.getCarId());
+    leaseEntity.setCustomerId(leaseDto.getCustomerId());
 
     leaseEntity.setDuration(leaseDto.getDuration());
     leaseEntity.setMileage(leaseEntity.getMileage());

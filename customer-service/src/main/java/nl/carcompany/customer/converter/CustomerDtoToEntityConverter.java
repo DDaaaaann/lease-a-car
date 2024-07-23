@@ -16,7 +16,6 @@ public class CustomerDtoToEntityConverter implements Converter<CustomerDto, Cust
   @Override
   public CustomerEntity convert(final CustomerDto customerDto) {
     final CustomerEntity customerEntity = new CustomerEntity();
-    customerEntity.setId(customerDto.getId());
     customerEntity.setName(customerDto.getName());
     customerEntity.setEmail(customerDto.getEmail());
 

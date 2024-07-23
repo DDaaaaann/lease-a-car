@@ -1,3 +1,6 @@
+lease:
+  gateway-service:
+    url: http://gateway-service:8080
 spring:
   datasource:
     url: jdbc:h2:mem:db
@@ -13,5 +16,3 @@ spring:
       enabled: true
 server:
   port: 8083
-#sharedsecret
-#gateway validate?

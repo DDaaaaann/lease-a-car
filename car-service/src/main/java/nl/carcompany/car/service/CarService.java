@@ -2,16 +2,17 @@ package nl.carcompany.car.service;
 
 import java.util.List;
 import nl.carcompany.rest.lease.model.CarDto;
+import nl.carcompany.rest.lease.model.CarResponseDto;
 
 public interface CarService {
 
-  CarDto createCar(CarDto carDto);
+  CarResponseDto createCar(CarDto carDto);
 
   void deleteCar(Long id);
 
-  CarDto findById(Long id);
+  CarResponseDto findById(Long id);
 
-  List<CarDto> findAll();
+  List<CarResponseDto> findAll();
 
   void updateCar(Long id, CarDto carDto);
 }

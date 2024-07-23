@@ -2,10 +2,11 @@ package nl.carcompany.lease.service;
 
 import java.util.List;
 import nl.carcompany.rest.lease.model.LeaseDto;
+import nl.carcompany.rest.lease.model.LeaseResponseDto;
 
 public interface LeaseService {
 
-  LeaseDto leaseCar(LeaseDto leaseDto);
+  LeaseResponseDto leaseCar(LeaseDto leaseDto);
 
-  List<LeaseDto> getLeases();
+  List<LeaseResponseDto> getLeases();
 }

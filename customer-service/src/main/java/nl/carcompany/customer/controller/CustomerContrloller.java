@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import nl.carcompany.customer.service.impl.CustomerServiceImpl;
 import nl.carcompany.rest.lease.api.CustomersApi;
 import nl.carcompany.rest.lease.model.CustomerDto;
+import nl.carcompany.rest.lease.model.CustomerResponseDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,7 +18,7 @@ public class CustomerContrloller implements CustomersApi {
   private final CustomerServiceImpl customerService;
 
   @Override
-  public ResponseEntity<CustomerDto> addCustomer(final CustomerDto customerDto) {
+  public ResponseEntity<CustomerResponseDto> addCustomer(final CustomerDto customerDto) {
     return ok(customerService.createCustomer(customerDto));
   }
 
@@ -28,13 +29,13 @@ public class CustomerContrloller implements CustomersApi {
   }
 
   @Override
-  public ResponseEntity<CustomerDto> getCustomerById(final Long id) {
+  public ResponseEntity<CustomerResponseDto> getCustomerById(final Long id) {
     return ok(customerService.findById(id));
   }
 
 
   @Override
-  public ResponseEntity<List<CustomerDto>> getCustomers() {
+  public ResponseEntity<List<CustomerResponseDto>> getCustomers() {
     return ok(customerService.findAll());
   }
 

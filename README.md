@@ -72,11 +72,18 @@ curl --location 'http://localhost:8080/cars' \
 ## Future developments
 - [x] Generate Rest clients
 - [x] Gateway service
+- [ ] Real database
+- [ ] API Design (https://medium.com/@wtr/openapi-design-strategies-8a626e09e309)
 - [ ] Fix vulnerabilities
 - [ ] Validation
 - [ ] Api tests
 - [ ] Auth service
-- [ ] DDD
+- [ ] DDD (https://medium.com/javarevisited/spring-boot-power-of-value-objects-a98831cfe4b8)
 - [ ] Load balancing
 - [ ] Circuit breakers
 - [ ] Containerization
+- [ ] Angular front-end (https://miloszeljko.com/how-to-make-api-first-approach-spring-angular/)
+- [ ] Pdf Generation
+- [ ] Shared services (abstract services , converters, repositories)
+
+/customers/1/leases/

@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import nl.carcompany.car.service.impl.CarServiceImpl;
 import nl.carcompany.rest.lease.api.CarsApi;
 import nl.carcompany.rest.lease.model.CarDto;
+import nl.carcompany.rest.lease.model.CarResponseDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,7 +18,7 @@ public class CarController implements CarsApi {
   private final CarServiceImpl carService;
 
   @Override
-  public ResponseEntity<CarDto> addCar(final CarDto carDto) {
+  public ResponseEntity<CarResponseDto> addCar(final CarDto carDto) {
     return ok(carService.createCar(carDto));
   }
 
@@ -28,12 +29,12 @@ public class CarController implements CarsApi {
   }
 
   @Override
-  public ResponseEntity<CarDto> getCarById(final Long id) {
+  public ResponseEntity<CarResponseDto> getCarById(final Long id) {
     return ok(carService.findById(id));
   }
 
   @Override
-  public ResponseEntity<List<CarDto>> getCars() {
+  public ResponseEntity<List<CarResponseDto>> getCars() {
     return ok(carService.findAll());
   }
 

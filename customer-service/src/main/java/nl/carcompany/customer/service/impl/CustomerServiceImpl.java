@@ -4,13 +4,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import nl.carcompany.customer.converter.CustomerDtoToEntityConverter;
-import nl.carcompany.customer.converter.CustomerEntityToDtoConverter;
+import nl.carcompany.customer.converter.CustomerEntityToResponseDtoConverter;
 import nl.carcompany.customer.entity.CustomerEntity;
 import nl.carcompany.customer.exceptions.CustomerNotFoundException;
 import nl.carcompany.customer.exceptions.NoUniqueResultException;
 import nl.carcompany.customer.repository.CustomerRepository;
 import nl.carcompany.customer.service.CustomerService;
 import nl.carcompany.rest.lease.model.CustomerDto;
+import nl.carcompany.rest.lease.model.CustomerResponseDto;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -19,10 +20,10 @@ public class CustomerServiceImpl implements CustomerService {
 
   private final CustomerRepository customerRepository;
   private final CustomerDtoToEntityConverter dtoToEntityConverter;
-  private final CustomerEntityToDtoConverter entityToDtoConverter;
+  private final CustomerEntityToResponseDtoConverter entityToDtoConverter;
 
   @Override
-  public CustomerDto createCustomer(final CustomerDto customerDto) {
+  public CustomerResponseDto createCustomer(final CustomerDto customerDto) {
     final CustomerEntity customerEntity = dtoToEntityConverter.convert(customerDto);
     final CustomerEntity savedCustomer = customerRepository.save(customerEntity);
     return entityToDtoConverter.convert(savedCustomer);
@@ -34,14 +35,14 @@ public class CustomerServiceImpl implements CustomerService {
   }
 
   @Override
-  public CustomerDto findById(final Long id) {
+  public CustomerResponseDto findById(final Long id) {
     final CustomerEntity customerEntity = customerRepository.findById(id)
         .orElseThrow(() -> new NoUniqueResultException(id));
     return entityToDtoConverter.convert(customerEntity);
   }
 
   @Override
-  public List<CustomerDto> findAll() {
+  public List<CustomerResponseDto> findAll() {
     final List<CustomerEntity> customerEntities = customerRepository.findAll();
     return customerEntities.stream()
         .map(entityToDtoConverter::convert)
