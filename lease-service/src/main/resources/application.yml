@@ -2,6 +2,8 @@ lease:
   gateway-service:
     url: http://gateway-service:8080
 spring:
+  application:
+    name: lease-service
   datasource:
     url: jdbc:h2:mem:db
     username: sa
@@ -14,5 +16,11 @@ spring:
   h2:
     console:
       enabled: true
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://discovery-service:8761/eureka
+
 server:
   port: 8083

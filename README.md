@@ -21,7 +21,21 @@ These services are available via the REST API.
 
 ### Gateway service
 
-The gateway service serves as an entrypoint for all api request. Making all above API's available.
+The gateway service serves as an entrypoint for all api request. Making all above API's available.\
+_Available on:_ `http://localhost:8080`
+
+### Discovery service
+
+The discovery service is a eureka server which facilitates service registration and discovery in a
+microservices architecture.
+The Eureka Server provides resilience and fault tolerance mechanisms to ensure the availability of
+services in case of failures.\
+_Available on:_ `http://localhost:8761`
+
+> Tips to make it work:
+> - Wait till services are discovered by gateway
+> - Property: `spring.application.name: car-service`
+
 
 ## Installation
 
@@ -29,6 +43,7 @@ Run `mvn clean install`
 _This will compile all modules and generated source code_
 
 Now start our seperate services:\
+Run `Discovery-service` \
 Run `Gateway-service` \
 Run `Car-service` \
 Run `Customer-service` \
@@ -76,6 +91,12 @@ curl --location 'http://localhost:8080/cars' \
 - [ ] V1Controller
 - [ ] HATEOAS
 - [ ] SwaggerUI
+- [ ] Readiness
+  probe (https://medium.com/@aleksanderkolata/docker-spring-boot-and-containers-startup-order-39230e5352a4)
+- [ ] API
+  Discovery (https://mayankposts.medium.com/spring-cloud-micro-service-architecture-with-discovery-and-gateway-using-netflix-eureka-48c9e9edce0e)
+- [ ] Logging
+- [ ] Monitoring
 - [ ] Lease request optimization ()
 - [ ] Real database
 - [ ] API Design (https://medium.com/@wtr/openapi-design-strategies-8a626e09e309)

@@ -1,16 +1,32 @@
 version: '3.8'
 services:
-  gateway:
+  discovery-service:
+    image: carcompany/discovery-service
+    container_name: discovery-service
+    build:
+      context: ./discovery-service
+      dockerfile: Dockerfile
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://discovery-service:8761" ]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    ports:
+      - "8761:8761"
+    networks:
+      - lease-a-car-network
+  gateway-service:
     image: carcompany/gateway-service
     container_name: gateway-service
     depends_on:
-      customer-service:
-        condition: service_started
+      discovery-service:
+        condition: service_healthy
       car-service:
+        condition: service_healthy
+      customer-service:
         condition: service_started
       lease-service:
         condition: service_started
-
     build:
       context: ./gateway-service
       dockerfile: Dockerfile
@@ -25,6 +41,14 @@ services:
     build:
       context: ./customer-service
       dockerfile: Dockerfile
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://customer-service:8081" ]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    depends_on:
+      discovery-service:
+        condition: service_started
     networks:
       - lease-a-car-network
 
@@ -34,6 +58,9 @@ services:
     build:
       context: ./car-service
       dockerfile: Dockerfile
+    depends_on:
+      discovery-service:
+        condition: service_started
     networks:
       - lease-a-car-network
 
@@ -43,6 +70,9 @@ services:
     build:
       context: ./lease-service
       dockerfile: Dockerfile
+    depends_on:
+      discovery-service:
+        condition: service_started
     networks:
       - lease-a-car-network
 

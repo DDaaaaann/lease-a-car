@@ -1,12 +1,18 @@
 gateway:
   customer-service:
+    name: customer-service
     context: /customers
-    url: http://customer-service:8081
   car-service:
+    name: car-service
     context: /cars
-    url: http://car-service:8082
   lease-service:
+    name: lease-service
     context: /leases
-    url: http://lease-service:8083
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: true
+    service-url:
+      defaultZone: http://discovery-service:8761/eureka
 server:
   port: 8080

@@ -23,8 +23,12 @@ public class GatewayServiceProperties {
   public static class Service {
 
     @NotBlank
-    private String url;
+    private String name;
 
     private String context;
+
+    protected String getUrl() {
+      return "lb://" + getName();
+    }
   }
 }
