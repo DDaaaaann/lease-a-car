@@ -1,0 +1,11 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Customer-service"
+    type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <module name="customer-service"/>
+    <option name="SPRING_BOOT_MAIN_CLASS"
+      value="nl.carcompany.customer.CustomerServiceApplication"/>
+    <method v="2">
+      <option name="Make" enabled="true"/>
+    </method>
+  </configuration>
+</component>

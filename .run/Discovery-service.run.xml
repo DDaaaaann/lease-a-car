@@ -1,0 +1,11 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Discovery-service"
+    type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <module name="discovery-service"/>
+    <option name="SPRING_BOOT_MAIN_CLASS"
+      value="nl.carcompany.discovery.DiscoveryServiceApplication"/>
+    <method v="2">
+      <option name="Make" enabled="true"/>
+    </method>
+  </configuration>
+</component>
