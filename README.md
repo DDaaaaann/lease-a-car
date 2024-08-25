@@ -88,13 +88,14 @@ curl --location 'http://localhost:8080/cars' \
 - [x] Generate Rest clients
 - [x] Gateway service
 - [x] Containerization
+- [x] API
+  Discovery (https://mayankposts.medium.com/spring-cloud-micro-service-architecture-with-discovery-and-gateway-using-netflix-eureka-48c9e9edce0e)
+- [ ] Auth service
 - [ ] V1Controller
 - [ ] HATEOAS
 - [ ] SwaggerUI
 - [ ] Readiness
   probe (https://medium.com/@aleksanderkolata/docker-spring-boot-and-containers-startup-order-39230e5352a4)
-- [ ] API
-  Discovery (https://mayankposts.medium.com/spring-cloud-micro-service-architecture-with-discovery-and-gateway-using-netflix-eureka-48c9e9edce0e)
 - [ ] Logging
 - [ ] Monitoring
 - [ ] Lease request optimization ()
@@ -103,7 +104,6 @@ curl --location 'http://localhost:8080/cars' \
 - [ ] Fix vulnerabilities
 - [ ] Validation
 - [ ] Api tests
-- [ ] Auth service
 - [ ] DDD (https://medium.com/javarevisited/spring-boot-power-of-value-objects-a98831cfe4b8)
 - [ ] Load balancing
 - [ ] Circuit breakers
